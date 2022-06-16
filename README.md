@@ -1,8 +1,8 @@
 # Mini TPs - Paradigma Lógico 2022
 
-Nombre y Apellido: ***...COMPLETAR...***
+Nombre y Apellido: Agustin Dubreucq
 
-**Reemplazá este texto por el Badge de GitHub Actions como se explica en el TP0**
+[![build](https://github.com/pdep-mit/mini-tps-logico-2022-agusdubreucq1/actions/workflows/build.yml/badge.svg)](https://github.com/pdep-mit/mini-tps-logico-2022-agusdubreucq1/actions/workflows/build.yml)
 
 ## Información general
 

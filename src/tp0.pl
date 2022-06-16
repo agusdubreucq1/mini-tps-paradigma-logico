@@ -1,7 +1,7 @@
 % Cambiar la implementación para el predicado laRespuesta/1
 % luego de correr los tests y ver que fallan.
 
-laRespuesta(???).
+laRespuesta(42).
 
 % --------------------------------
 % TESTS - NO TOCAR
@@ -16,3 +16,4 @@ test(laRespuestaEsInversible, true(Respuesta == 42)):-
         laRespuesta(Respuesta).
 
 :- end_tests(tests_tp0).
+
