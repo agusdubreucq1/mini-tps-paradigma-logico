@@ -15,12 +15,47 @@ tieneCarne(polloALaPlancha).
 % Cambiar la implementación para el predicado leGusta/2 de modo que relacione 
 % a una persona con una comida (en ese orden) de acuerdo a lo pedido.
 
-leGusta(???, ???).
+leGusta(juan, asado).
+leGusta(gabriel, asado).
+leGusta(gabriel, NacNpop):-
+        precio(NacNpop, Precio),
+        Precio < 300.
+leGusta(juan, tostadoVeggie).
+leGusta(soledad, Comida):-
+        leGusta(gabriel, Comida),
+        not((leGusta(juan, Comida))).
+leGusta(tomas, Comida):-
+        tieneCarne(Comida).
+leGusta(celeste, Comida):-
+        precio(Comida, _).
+
+
 
 % Cambiar la implementación para el predicado puedePedir/2 de modo que relacione 
 % a una persona con una comida (en ese orden) de acuerdo a lo pedido.
 
-puedePedir(???, ???).
+dispuestoAGastar(juan, 500).
+dispuestoAGastar(celeste, 400).
+dispuestoAGastar(soledad, Plata):-
+        dispuestoAGastar(tomas, PlataTomas),
+        Plata is PlataTomas * 2.
+dispuestoAGastar(tomas, Plata):-
+        precio(hamburguesa, Plata).
+dispuestoAGastar(gabriel, Plata):-
+        dispuestoAGastar(carolina, Plata1),
+        Plata is Plata1 // 2.
+dispuestoAGastar(carolina, Plata):-
+        precio(papasFritas, Plata1),
+        precio(asado, Plata2),
+        Plata is Plata1 + Plata2.
+
+
+
+puedePedir(Persona, Comida):-
+        dispuestoAGastar(Persona, Plata),
+        leGusta(Persona, Comida),
+        precio(Comida, Precio),
+        Plata >= Precio.
 
 % --------------------------------
 % TESTS - NO TOCAR
