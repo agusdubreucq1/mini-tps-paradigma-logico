@@ -6,6 +6,7 @@ precio(ensalada,190).
 precio(pizzetas, 250).
 precio(polloALaPlancha, 320).
 precio(tostadoVeggie, 150).
+precio(tortilla, 280).
 
 tieneCarne(asado).
 tieneCarne(hamburguesa).
@@ -69,16 +70,16 @@ test(genteALaQueLeGustaElAsado, set(Persona == [juan, gabriel, celeste, tomas]))
 test(gustosDeJuan, set(Comida == [asado, tostadoVeggie])):-
         leGusta(juan, Comida).
 
-test(gustosDeGabriel, set(Comida == [asado, papasFritas, ensalada, pizzetas, tostadoVeggie])):-
+test(gustosDeGabriel, set(Comida == [asado, papasFritas, ensalada, pizzetas, tostadoVeggie, tortilla])):-
         leGusta(gabriel, Comida).
 
-test(gustosDeSoledad, set(Comida == [papasFritas, ensalada, pizzetas])):-
+test(gustosDeSoledad, set(Comida == [papasFritas, ensalada, pizzetas, tortilla])):-
         leGusta(soledad, Comida).
 
 test(gustosDeTomas, set(Comida == [asado, hamburguesa, lomitoDeLaCasa, polloALaPlancha])):-
         leGusta(tomas, Comida).
 
-test(gustosDeCeleste, set(Comida == [asado, lomitoDeLaCasa, hamburguesa, papasFritas, ensalada, pizzetas, polloALaPlancha, tostadoVeggie])):-
+test(gustosDeCeleste, set(Comida == [asado, lomitoDeLaCasa, hamburguesa, papasFritas, ensalada, pizzetas, polloALaPlancha, tostadoVeggie, tortilla])):-
         leGusta(celeste, Comida).
 
 test(aCarolinaNoLeGustaNada, fail):-
@@ -103,13 +104,13 @@ test(aCelesteLeAlcanzaParaPedirPollo, nondet):-
 test(comidasQuePuedePedirJuan, set(Comida == [tostadoVeggie])):-
         puedePedir(juan, Comida).
 
-test(comidasQuePuedePedirSoledad, set(Comida == [papasFritas, ensalada, pizzetas])):-
+test(comidasQuePuedePedirSoledad, set(Comida == [papasFritas, ensalada, pizzetas, tortilla])):-
         puedePedir(soledad, Comida).
 
 test(comidasQuePuedePedirTomas, set(Comida == [hamburguesa, polloALaPlancha])):-
         puedePedir(tomas, Comida).
 
-test(comidasQuePuedePedirGabriel, set(Comida == [papasFritas, ensalada, pizzetas, tostadoVeggie])):-
+test(comidasQuePuedePedirGabriel, set(Comida == [papasFritas, ensalada, pizzetas, tostadoVeggie, tortilla])):-
         puedePedir(gabriel, Comida).
 
 test(carolinaNoPuedePedirNadaPorqueNoLeGustaLoQueHay, fail):-
