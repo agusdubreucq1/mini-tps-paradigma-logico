@@ -14,7 +14,7 @@ ultimaEvolucion(Especie):-
 
 predecible(Especie):-
         tipo(Especie, Tipo),
-        forall(evolucion(Especie, EspecieEv), tipo(EspecieEv, Tipo)).
+        forall(evolucion(Especie, EspecieEv), (tipo(EspecieEv, Tipo), predecible(EspecieEv))).
 
 % --------------------------------
 % Código inicial - NO TOCAR
