@@ -24,6 +24,7 @@ precio(ensalada,190).
 precio(pizzetas, 250).
 precio(polloALaPlancha, 320).
 precio(tostadoVeggie, 150).
+precio(tortilla, 280).
 
 tieneCarne(asado).
 tieneCarne(hamburguesa).
