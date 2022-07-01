@@ -9,8 +9,8 @@ incompatibles(Tipo1,Tipo2):-
         tipo(Alguien, Tipo2))).
 
 ultimaEvolucion(Especie):-
-        evolucion(EspecieAnt, Especie),
-        not(evolucion(Especie, AlgunaEspecie)).
+        evolucion(_, Especie),
+        not(evolucion(Especie, _)).
 
 predecible(Especie):-
         tipo(Especie, Tipo),
