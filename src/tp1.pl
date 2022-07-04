@@ -16,11 +16,17 @@ tieneCarne(polloALaPlancha).
 % Cambiar la implementación para el predicado leGusta/2 de modo que relacione 
 % a una persona con una comida (en ese orden) de acuerdo a lo pedido.
 
+nacNPop(Comida):-
+        precio(Comida, Precio),
+        Precio < 300.
+
+estaEnMenu(Comida):-
+        precio(Comida, _).
+
 leGusta(juan, asado).
 leGusta(gabriel, asado).
-leGusta(gabriel, NacNpop):-
-        precio(NacNpop, Precio),
-        Precio < 300.
+leGusta(gabriel, Comida):-
+        nacNPop(Comida).
 leGusta(juan, tostadoVeggie).
 leGusta(soledad, Comida):-
         leGusta(gabriel, Comida),
@@ -28,7 +34,12 @@ leGusta(soledad, Comida):-
 leGusta(tomas, Comida):-
         tieneCarne(Comida).
 leGusta(celeste, Comida):-
-        precio(Comida, _).
+        estaEnMenu(Comida).
+
+
+
+
+
 
 
 
