@@ -2,11 +2,25 @@
 % Predicados a desarrollar
 % --------------------------------
 
-votosTotales(???, ???).
+votosTotales(Partido, Votos):-
+	votos(Partido, _, _),
+	findall(Voto, votos(Partido, _, Voto), ListaVotos),
+	sum_list(ListaVotos, Votos).
 
-repartida(???).
+repartida(Provincia):-
+	padron(Provincia, _),
+	findall(Partido, muchosVotos(Partido, Provincia), Partidos),
+	length(Partidos, Cantidad),
+	Cantidad >= 3.
 
-pocofollower(???).
+muchosVotos(Partido, Provincia):-
+	votos(Partido, Provincia, Votos),
+	padron(Provincia, Empadronados),
+	Votos > Empadronados / 5.
+
+pocofollower(Partido):-
+	votos(Partido, _, _),
+	not(muchosVotos(Partido, _)).
 
 % --------------------------------
 % Código inicial - NO TOCAR
