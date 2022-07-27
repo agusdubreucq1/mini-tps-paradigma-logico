@@ -2,11 +2,44 @@
 % Predicados a desarrollar
 % --------------------------------
 
-lecturaIntensa(???).
+lecturaIntensa(libro(_, _, CantidadDePaginas)):-
+  CantidadDePaginas >= 500.
+lecturaIntensa(libro(_, paidos, _)).
 
-lectorCasual(???).
+lecturaIntensa(paper(_, CantidadDePaginas, CantidadDeVisitas)):-
+  CantidadDePaginas - CantidadDeVisitas > 100.
 
-lecturaMasLarga(???, ???).
+lecturaIntensa(saga(_, CantidadDeLibros)):-
+  CantidadDeLibros > 3.
+%---------
+
+lectorCasual(Persona):-
+  leyo(Persona,_),
+  forall(leyo(Persona, Material), not(lecturaIntensa(Material))).
+
+lecturaMasLarga(Persona, Lectura):-
+  leyo(Persona, Lectura),
+  forall((leyo(Persona, OtraLectura), OtraLectura \= Lectura), masLarga(Lectura, OtraLectura)).
+
+masLarga(saga(_, CantidadDeLibros1), saga(_, CantidadDeLibros2)):-
+  CantidadDeLibros1 > CantidadDeLibros2.
+
+masLarga(saga(_, _), libro(_, _, _)).
+masLarga(saga(_, _), paper(_,_,_)).
+
+masLarga(Lectura, haiku(_)):-
+  Lectura \= haiku(_).
+
+masLarga(Lectura1, Lectura2):-
+  paginas(Lectura1, Paginas1),
+  paginas(Lectura2, Paginas2),
+  Paginas1 > Paginas2.
+
+paginas(libro(_,_,Paginas), Paginas).
+paginas(paper(_,Paginas, _), Paginas).
+
+  
+
 
 % --------------------------------
 % Código inicial - NO TOCAR
